@@ -1,5 +1,5 @@
 import React from "react";
-import "./WelcomeScreenComponent.scss"
+import "./welcomeScreenComponent.scss"
 
 export function WelcomeScreenComponent() {
     return (
