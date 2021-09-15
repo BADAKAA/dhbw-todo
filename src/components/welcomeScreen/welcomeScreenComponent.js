@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./welcomeScreenComponent.scss"
 
 export function WelcomeScreenComponent() {
@@ -11,10 +11,11 @@ export function WelcomeScreenComponent() {
 
   if (visibility){
 
-    return <div>
+    return (
+    <div className="welcomeScreenComponent">
       <p>Herzlich Willkommen zur ToDo-Liste!</p>
       <button onClick={hide}>Jetzt loslegen</button>
-    </div>
+    </div>)
   }
   return <div className='backgroundForDiv'></div>
 
