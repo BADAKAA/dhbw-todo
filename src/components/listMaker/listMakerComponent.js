@@ -7,21 +7,25 @@ import { ResetComponent } from "../reset/resetComponent";
 export function ListMakerComponent() {
   const [listContent, setListContent] = useState([]);
 
-  useEffect(()=> {
-      // Wenn die Komponente das erste mal geladen wird, dann überprüft sie, ob bereits Listenwerte im LocalStorage festgehalten wurden.
-      // Andernfalls wird eine Leere Liste initialisiert.
-      // Das leere Array am Ende der "useEffect()"-Funktion bewirkt, dass diese nur einmal bei der Komponenten-Initialisierung aufgerufen wird.
-    setListContent(JSON.parse(localStorage.getItem("dhbw-todo-gruppe-2")||"[]"));
+  useEffect(() => {
+    // Wenn die Komponente das erste mal geladen wird, dann überprüft sie, ob bereits Listenwerte im LocalStorage festgehalten wurden.
+    // Andernfalls wird eine Leere Liste initialisiert.
+    // Das leere Array am Ende der "useEffect()"-Funktion bewirkt, dass diese nur einmal bei der Komponenten-Initialisierung aufgerufen wird.
+    setListContent(
+      JSON.parse(localStorage.getItem("dhbw-todo-gruppe-2") || "[]")
+    );
     console.log(JSON.parse(localStorage.getItem("dhbw-todo-gruppe-2")));
-      // Diese Funktion wird von React aufgerufen, wenn die Komponente "zerstört" wird. Deshalb werden an dieser Stelle die Werte der Liste im LocalStorage festgehalten.
-    return () => localStorage.setItem("dhbw-todo-gruppe-2",JSON.stringify(listContent));
-  },[])
+    // Diese Funktion wird von React aufgerufen, wenn die Komponente "zerstört" wird. Deshalb werden an dieser Stelle die Werte der Liste im LocalStorage festgehalten.
+    return () =>
+      localStorage.setItem("dhbw-todo-gruppe-2", JSON.stringify(listContent));
+  }, []);
   return (
     <div className="listMakerComponent">
-        <div className="editor">
-            <ResetComponent emptyListeninhalt={setListContent} />
-            <InputComponent updateList={setListContent} />
-        </div>
+      <div className="editor">
+        <ResetComponent emptyListeninhalt={setListContent} />
+        <InputComponent updateList={setListContent} />
+        <listComponent updateList={setListContent} />
+      </div>
       <ListComponent list={listContent} />
     </div>
   );
