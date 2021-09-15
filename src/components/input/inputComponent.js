@@ -13,10 +13,14 @@ export function InputComponent({updateList}) {
         updateList(currentArray => [...currentArray,inputValue])
         setValue("")
     }
+    function keyPressed(e) {
+        // Diese Funktion ermöglicht es, einen Listeneintrag durch Drücken der Enter-Taste hinzuzufügen.
+        if (e.key==="Enter") addItem();
+    }
     return (
         <div className="inputComponent">
-            <input value={inputValue} placeholder="List item text..." onChange={onChange} type="text" />
-            <i className="bi bi-plus-square-fill" onClick={addItem}></i>
+            <input onKeyDown={keyPressed} value={inputValue} placeholder="List item text..." onChange={onChange} type="text" />
+            <button className="square add-item" onClick={addItem}><i className="fa fa-plus"></i></button>
         </div>
     )
 }
