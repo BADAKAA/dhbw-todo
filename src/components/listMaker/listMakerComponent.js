@@ -7,7 +7,7 @@ export function ListMakerComponent() {
 
     const [listContent,setListContent] = useState([])
     return (
-        <div class="list-component">
+        <div className="listMakerComponent">
             <InputComponent updateList={setListContent}/>
             <ListComponent list={listContent}/>
         </div>
