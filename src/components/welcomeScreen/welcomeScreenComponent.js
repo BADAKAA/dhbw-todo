@@ -13,8 +13,8 @@ export function WelcomeScreenComponent() {
 
     return (
     <div className="welcomeScreenComponent">
-      <p>Herzlich Willkommen zur ToDo-Liste!</p>
-      <button onClick={hide}>Jetzt loslegen</button>
+      <p id="welcomeFont">Herzlich Willkommen zur ToDo-Liste!</p>
+      <button id="welcomeButton" onClick={hide}>Jetzt loslegen</button>
     </div>)
   }
   return <div className='backgroundForDiv'></div>
