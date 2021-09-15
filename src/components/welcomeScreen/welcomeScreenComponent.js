@@ -2,22 +2,23 @@ import React, { useEffect, useState } from "react";
 import "./welcomeScreenComponent.scss"
 
 export function WelcomeScreenComponent() {
+  const [visible,setVisibility] = useState(true);
 
-  //Wir speichern im State ob die Komponente sichtbar ist
-  const [visibility, setVisibility] = useState(true)
-  function hide() {
-    setVisibility(false)
-  }
+  const hide = () => setVisibility(false)
+  const show = () => setVisibility(true)
+
   useEffect(()=> {
+    // Dieser Eventlistener erlaubt es, die Startseite auch durch Betätigen der Enter- oder Escape-Taste zu schließen.
     window.addEventListener("keydown", e=>{
       if (e.key==="Enter" || e.key==="Escape") hide();
     });
   },[])
 
-  if (!visibility) return <div></div>;
+  if (!visible) return <i id="homeIcon" onClick={show} className="fa fa-home"></i>;
 
   return (
     <div className="welcomeScreenComponent">
+      <i id="todoIcon" onClick={hide} className="fa fa-tasks"></i>
       <div className="title-text">
         <h2 id="welcomeFont">
           All your tasks–<br />already done.

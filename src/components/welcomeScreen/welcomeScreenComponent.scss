@@ -1,3 +1,19 @@
+#homeIcon,#todoIcon {
+    position: absolute;
+    cursor: pointer;
+    color: var(--blue);
+    font-size: 2rem;
+    top: 2rem;
+    left: 2rem;
+    transition: transform 0.3s;
+    &:hover:not(:active) {
+        transform: scale(1.05);
+    }
+    &#todoIcon {
+        color: var(--logo)
+    }
+}
+
 .welcomeScreenComponent {
     position: fixed;
     top: 0; 
