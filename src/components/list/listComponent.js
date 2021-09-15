@@ -6,6 +6,6 @@ export function ListComponent({list}) {
     return(
         <ul className="todoList">
             {list && list.map(element => <li>{element}</li>)}
-        </ul>   
+        </ul>
     )
 }  
