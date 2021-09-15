@@ -23,7 +23,6 @@ export function ListMakerComponent() {
       <div className="editor">
         <ResetComponent emptyListeninhalt={setListContent} />
         <InputComponent updateList={setListContent} />
-        <listComponent updateList={setListContent} />
       </div>
       <ListComponent list={listContent} />
     </div>

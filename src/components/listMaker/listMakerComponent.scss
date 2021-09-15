@@ -9,22 +9,8 @@
         align-items: center;
     }
     button {
-        cursor: pointer;
-        transition: opacity 0.3s;
-        align-self: center;
-        display: inline-flex;
-        padding:0.75rem;
-        border:none;
-        outline: none;
-        border-radius: 0;
         &.square {
             aspect-ratio: 1;
-        }
-        &:hover:not(:active){
-            opacity: 0.75;
-        }
-        &:active {
-            transition: none;
         }
         &.add-item {
             margin-left: 1rem;
