@@ -1,6 +1,6 @@
 import React from "react";
 import "./listItemComponent.scss"
 
-function ListItemComponent() {
+export function ListItemComponent() {
     return <li></li>
 }
