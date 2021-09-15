@@ -9,12 +9,13 @@ export function InputComponent({updateList}) {
         setValue(e.target.value);
     }
     function addItem() {
+        if (!inputValue) return; // Diese Zeile verhindert, dass ein leeres Listenelement hinzugefügt wird.
         updateList(currentArray => [...currentArray,inputValue])
         setValue("")
     }
     return (
         <div className="inputComponent">
-            <input  value={inputValue} placeholder="List item text..." onChange={onChange} type="text" />
+            <input value={inputValue} placeholder="List item text..." onChange={onChange} type="text" />
             <i className="bi bi-plus-square-fill" onClick={addItem}></i>
         </div>
     )
