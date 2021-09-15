@@ -7,6 +7,7 @@
 $body-font: 'Poppins','Raleway',-apple-system, BlinkMacSystemFont, 'Roboto','Segoe UI', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 body {
   margin: 0;
+  overflow: hidden;
   * {
     font-family: $body-font;
     box-sizing: border-box;

@@ -19,7 +19,7 @@ export function InputComponent({updateList}) {
     }
     return (
         <div className="inputComponent">
-            <input onKeyDown={keyPressed} value={inputValue} placeholder="List item text..." onChange={onChange} type="text" />
+            <input onKeyDown={keyPressed} value={inputValue} placeholder="Eintrag hinzufügen..." onChange={onChange} type="text" />
             <button className="square add-item" onClick={addItem}><i className="fa fa-plus"></i></button>
         </div>
     )

@@ -6,6 +6,9 @@
         font-size: 1.25rem;
         padding: 0.5rem;
         outline: none;
-        min-width: clamp(50px,50vw,1000px)
+        min-width: clamp(50px,50vw,1000px);
+        @media (max-width:1000px) {
+            font-size: 1rem;
+        }
     }
 }

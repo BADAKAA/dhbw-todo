@@ -17,6 +17,7 @@ h1#title {
     flex-direction: column;
     padding-left: 4rem;
     padding-right: 4rem;
+    overflow: auto;
 }
 button {
     cursor: pointer;
@@ -32,5 +33,11 @@ button {
     }
     &:active {
         transition: none;
+    }
+}
+@media screen and(max-width:1000px) {
+    h1#title {
+        margin-top: 5rem;
+        font-size: 2rem;
     }
 }
