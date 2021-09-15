@@ -13,8 +13,8 @@ export function ListMakerComponent() {
       // Das leere Array am Ende der "useEffect()"-Funktion bewirkt, dass diese nur einmal bei der Komponenten-Initialisierung aufgerufen wird.
     setListContent(JSON.parse(localStorage.getItem("dhbw-todo-gruppe-2")||"[]"));
     console.log(JSON.parse(localStorage.getItem("dhbw-todo-gruppe-2")));
-      // Diese Funktion wird von React aufgerufen, wenn die Komponente "zerstört" wird. Deshalb werden an dieser Stelle die Werte der Liste im LocalStorage festgehalten.
-    return () => localStorage.setItem("dhbw-todo-gruppe-2",JSON.stringify(listContent));
+      // Bevor die Anwendung geschlossen wird, werden durch diese Funktion die Werte der Liste im LocalStorage festgehalten.
+    window.addEventListener("beforeunload", () => localStorage.setItem("dhbw-todo-gruppe-2",JSON.stringify(listContent)))
   },[])
   return (
     <div className="listMakerComponent">
