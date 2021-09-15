@@ -1,8 +1,19 @@
+:root {
+    --red: #AD2E24;
+    --green-dark: #004F2D;
+    --green:#0A8754;
+    --green-hover: #7cae7a;
+    --blue: #086788;
+    --blue-hover: #BFD7EA;
+    --orange: #F4B860;
+}
 h1#title {
     font-size: 4rem;
     text-align: center;
 }
 .main {
+    display: flex;
+    flex-direction: column;
     padding-left: 4rem;
     padding-right: 4rem;
 }

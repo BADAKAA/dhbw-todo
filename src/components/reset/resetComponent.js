@@ -10,8 +10,8 @@ export const ResetComponent = ({ emptyListeninhalt }) => {
   }
   //Der Button RESET aktiviert den resetHandler, welcher das Array leert.
   return (
-    <button className="reset-button" onClick={resetHandler}>
-      RESET
+    <button className="reset-list" onClick={resetHandler}>
+      LISTE LÖSCHEN <i className="fa fa-broom"></i>
     </button>
   );
 };

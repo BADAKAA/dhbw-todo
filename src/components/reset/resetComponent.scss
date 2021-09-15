@@ -1,3 +1,11 @@
-.reset-button {
-  margin-top: 1rem;
+.reset-list {
+  margin-right: 1rem;
+  font-weight: 600;
+  color: white;
+  background-color: var(--red);
+  display: flex;
+  align-items: center;
+  i {
+    margin-left: 0.5rem;
+  }
 }
