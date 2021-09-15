@@ -8,6 +8,26 @@ ul.todoList {
         padding-top: 1rem;
         padding-bottom: 1rem;
         border-bottom: 1px solid rgba(0,0,0,0.1);
+
+        display: flex;
+        justify-content: space-between;
+        button {
+            margin-left: 1rem;
+            color: white;
+            &.delete {
+                background-color: var(--red);
+            }
+            &.edit {
+                background-color: var(--blue);
+            }
+        }
+        .itemContent {
+            width: 100%;
+        }
+        .buttons {
+            white-space: nowrap;
+
+        }
     }
     .listTitle {
         font-weight: 800;
