@@ -1,7 +1,7 @@
 import React from "react";
 import "./WelcomeScreenComponent.scss"
 
-export function WelcomeScreenCompoennt() {
+export function WelcomeScreenComponent() {
     return (
     <div>
 
