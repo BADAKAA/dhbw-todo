@@ -13,9 +13,9 @@ export function InputComponent({updateList}) {
         setValue("")
     }
     return (
-        <div>
+        <div className="inputComponent">
             <input  value={inputValue} placeholder="List item text..." onChange={onChange} type="text" />
-            <button className="add-item-button" onClick={addItem}>+</button>
+            <i className="bi bi-plus-square-fill" onClick={addItem}></i>
         </div>
     )
 }

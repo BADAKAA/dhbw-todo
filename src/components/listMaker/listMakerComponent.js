@@ -8,8 +8,10 @@ export function ListMakerComponent() {
   const [listContent, setListContent] = useState([]);
   return (
     <div className="listMakerComponent">
-      <InputComponent updateList={setListContent} />
+        <div className="editor">
       <ResetComponent emptyListeninhalt={setListContent} />
+      <InputComponent updateList={setListContent} />
+        </div>
       <ListComponent list={listContent} />
     </div>
   );
