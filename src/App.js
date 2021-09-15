@@ -3,7 +3,7 @@ import { WelcomeScreenComponent } from './components/welcomeScreen/welcomeScreen
 import { ListMakerComponent } from './components/listMaker/listMakerComponent';
 
 function App() {
-  return (
+  return (  
     <div className="main">
       <h1 id="title">TODO LIST</h1>
       <WelcomeScreenComponent />

@@ -2,9 +2,20 @@ import React from "react";
 import "./welcomeScreenComponent.scss"
 
 export function WelcomeScreenComponent() {
-    return (
-    <div>
+  
+  //Wir speichern im State ob die Komponente sichtbar ist
+  const [visibility, setVisibility] = useState(true)
+  function hide (event){
+    setVisibility(false)
+  }
 
+  if (visibility){
+
+    return <div>
+      <p>Herzlich Willkommen zur ToDo-Liste!</p>
+      <button onClick={hide}>Jetzt loslegen</button>
     </div>
-    )
-}
+  }
+  return <div className='backgroundForDiv'></div>
+
+};
