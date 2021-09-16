@@ -15,6 +15,14 @@ ul.todoList {
         display: flex;
         justify-content: space-between;
         transition: background-color 0.25s;
+        input {
+            border: none;
+            background: none;
+            &:focus {
+                background-color: white;
+                outline: 1px solid grey;
+            }
+        }
         &:hover:not(.title) {
             cursor: pointer;
             background-color: var(--list-hover);
@@ -25,8 +33,14 @@ ul.todoList {
             &.delete {
                 background-color: var(--red);
             }
-            &.edit {
-                background-color: var(--blue);
+            &.save {
+                background-color: var(--blue-hover);
+                &.is-edited {
+                    background-color: var(--blue);
+                }
+                i {
+                    pointer-events: none;
+                }
             }
             &.check {
                 background-color: var(--green-hover);

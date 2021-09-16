@@ -10,7 +10,8 @@ export function ListMakerComponent() {
 
   // interface listItem {
   //   content:string,
-  //   checked:boolean
+  //   checked:boolean,
+  //   id: number
   // }
 
   const [listContent, setListContent] = useState([]);
@@ -23,14 +24,13 @@ export function ListMakerComponent() {
     // Andernfalls wird eine Leere Liste initialisiert.
     // Das leere Array am Ende der "useEffect()"-Funktion bewirkt, dass diese nur einmal bei der Komponenten-Initialisierung aufgerufen wird.
     setListContent(
-      JSON.parse(localStorage.getItem("dhbw-todo-gruppe-2") || "[]")
+      JSON.parse(localStorage.getItem("dhbw-todo-group-2") || "[]")
     );
   },[])
-  console.log(listContent);
 
   useEffect(() => {
     // Bei jeder Änderung des Listeninhalts werden durch diese Funktion die Werte im LocalStorage festgehalten.
-    localStorage.setItem("dhbw-todo-gruppe-2",JSON.stringify([...new Set(listContent)]))
+    localStorage.setItem("dhbw-todo-group-2",JSON.stringify([...new Set(listContent)]))
     console.log([...new Set(listContent)]); // The Set Operator is used to remove duplicates;
   },[listContent])
   
@@ -42,8 +42,12 @@ export function ListMakerComponent() {
 
   function addItem(content) {
     if (!content) return displayError("Kein Text eingegeben."); // Diese Zeile verhindert, dass ein leeres Listenelement hinzugefügt wird.
-    if((listContent.map(el=>el.content)).includes(content)) return displayError("Dieser Punkt steht bereits auf der Liste."); // Diese Zeile verhindert, dass ein doppeltes Listenelement hinzugefügt wird (wichtig für die Identifizierung über keys).
-    content = {content:content,checked:false};
+    const allIDs = [...listContent.map(el=>el.id)];
+    const hightestID = Math.max(...allIDs)!==-Infinity ? Math.max(...allIDs) : 0; // Wenn noch keine Enträge vorhanden sind, dann wird die höchte ID "0" ausgegeben.
+    const newID = hightestID+1;
+    const allContent = listContent.map(el=>el.content);
+    if(allContent.includes(content)) return displayError("Dieser Punkt steht bereits auf der Liste."); // Diese Zeile verhindert, dass ein doppeltes Listenelement hinzugefügt wird (wichtig für die Identifizierung über keys).
+    content = {content:content,checked:false,id:newID};
     setListContent([...listContent,content])
   }
   function removeItem(index) {

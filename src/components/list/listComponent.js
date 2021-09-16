@@ -12,7 +12,11 @@ export function ListComponent({ list, removeItemAtIndex, setCheckAtIndex, editIt
     const lastEditedElement = document.querySelector("#" + lastEdited)
     if (lastEditedElement && lastEditedElement !== document.activeElement) lastEditedElement.focus();
   })
-
+  useEffect(() => {
+    window.addEventListener("click", e => {
+      if (!e.target.classList.contains("itemContent")) setLastEdited(null);
+    })
+  },[])
   function removeItem(element) {
     const index = list.indexOf(element);
     removeItemAtIndex(index);
@@ -29,20 +33,19 @@ export function ListComponent({ list, removeItemAtIndex, setCheckAtIndex, editIt
   }
 
   function editItem(e, element) {
-    if (e.button) console.log("MOUSE");
     const index = list.indexOf(element);
     editItemAtIndex(index, e.target.value);
   }
 
   // Die nächsten beiden Funktion erlauben es, das Bearbeiten eines Listeneintrags durch Drücken der Escape- oder Enter-Taste zu beenden.
   function keyInputOnItem(e,element) {
-    if (e.key === "Enter" || e.key === "Escape") return abortAction(e);
+    if (e.key === "Enter" || e.key === "Escape") return endEdit(e);
     if (e.key==="Delete") removeItem(element); // Diese Zeile erlaubt es, einen Listeneintrag während der Bearbeitung durch drücken der Entfernen-Tatse
   }
-  function abortAction(e) {
-    e.target.blur();
-    console.log("Abort");
-    setLastEdited(null)
+  function endEdit(e,element) {
+    if (e) e.target.blur();
+    if (e && e.target.parentElement) e.target.parentElement.blur(); 
+    setLastEdited(null);
   }
 
   // Jedes Listenelement wird in drei Bereiche unterteilt
@@ -53,10 +56,10 @@ export function ListComponent({ list, removeItemAtIndex, setCheckAtIndex, editIt
       </li>
       {list &&
         list.map((element) => (
-          <li key={element.content} className="listItem"  >
+          <li key={element.id} className="listItem"  >
             <button className={"square check " + (element.checked ? "checked" : "")} onClick={()=> checkItem(element)}> <i className="fa fa-check"></i> </button>
             <input 
-              id={"input" + list.indexOf(element)} // Diese ID wird verwendet, um das Element wiederzufinden. Siehe useEffect()-Hook
+              id={"input-" + element.id} // Diese ID wird verwendet, um das Element wiederzufinden. Siehe useEffect()-Hook
               onKeyDown={e => keyInputOnItem(e,element)}
               onClick={itemClicked}
               //onClick={() =>  checkItem(element)} // This line
@@ -66,7 +69,7 @@ export function ListComponent({ list, removeItemAtIndex, setCheckAtIndex, editIt
             /> {/* Wenn der Wert "checked" im Objekt "true" ist, dann wird die Klasse "checked" hinzugefüt*/}
 
             <div className={"buttons " + (element.checked ? "checked" : "")}>
-              <button className="sqaure edit" onClick={() => removeItem(element)}> <i className="fa fa-pen"></i> </button>
+              <button className={"sqaure save " + (lastEdited === "input-"+element.id ? "is-edited" : "")} onClick={()=>endEdit(null,element)}> <i className="fa fa-times"></i> </button>
               <button className="sqaure delete" onClick={() => removeItem(element)}> <i className="fa fa-trash"></i> </button>
             </div>
 
