@@ -32,12 +32,12 @@ ul.todoList {
                 background-color: var(--green-hover);
                 margin-left: 0;
                 margin-right: 1rem;
+                &:hover {
+                    opacity: 1;
+                    background-color: var(--green);
+                }
             }
      
-            &:hover {
-                opacity: 1;
-                background-color: var(--green);
-            }
         }
   
         button.check.checked {
@@ -60,7 +60,7 @@ ul.todoList {
         .itemContent {
             width: 100%;
             display: flex;
-            justify-content: start;
+            justify-content: flex-start;
             align-items: center;
         }
     }

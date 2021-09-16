@@ -30,7 +30,8 @@ export function ListMakerComponent() {
 
   useEffect(() => {
     // Bei jeder Änderung des Listeninhalts werden durch diese Funktion die Werte im LocalStorage festgehalten.
-    localStorage.setItem("dhbw-todo-gruppe-2",JSON.stringify(listContent))
+    localStorage.setItem("dhbw-todo-gruppe-2",JSON.stringify([...new Set(listContent)]))
+    console.log([...new Set(listContent)]); // The Set Operator is used to remove duplicates;
   },[listContent])
   
   function displayError(error) {
@@ -39,13 +40,13 @@ export function ListMakerComponent() {
     setErrorTimeout(setTimeout(()=>setErrorMessage(""), 5000));
   }
 
-  function addItem(item) {
-    if (!item) return displayError("Kein Text eingegeben."); // Diese Zeile verhindert, dass ein leeres Listenelement hinzugefügt wird.
-    if((listContent.map(el=>el.content)).includes(item)) return displayError("Dieser Punkt steht bereits auf der Liste."); // Diese Zeile verhindert, dass ein doppeltes Listenelement hinzugefügt wird (wichtig für die Identifizierung über keys).
-    item = {content:item,checked:false};
-    setListContent([...listContent,item])
+  function addItem(content) {
+    if (!content) return displayError("Kein Text eingegeben."); // Diese Zeile verhindert, dass ein leeres Listenelement hinzugefügt wird.
+    if((listContent.map(el=>el.content)).includes(content)) return displayError("Dieser Punkt steht bereits auf der Liste."); // Diese Zeile verhindert, dass ein doppeltes Listenelement hinzugefügt wird (wichtig für die Identifizierung über keys).
+    content = {content:content,checked:false};
+    setListContent([...listContent,content])
   }
-  function removeItemAtIndex(index) {
+  function removeItem(index) {
     if ((!index && index!==0 )|| typeof index !=="number") return;
     const newList = listContent.slice();
     // Die slice()-Funktion erstellt eine Kopie des Arrays.
@@ -55,10 +56,16 @@ export function ListMakerComponent() {
     setListContent(newList);
   }
 
-  function setCheckAtIndex(index,value) {
+  function setCheck(index,value) {
     if ((!index && index!==0 )|| typeof index !=="number" || typeof value !== "boolean") return console.error("Cannot check item.");;
     const newList = listContent.slice(); //Erklärung "slice()": siehe "removeItemAtIndex()";
     newList[index].checked=value;
+    setListContent(newList);
+  }
+  function editItem(index,content) {
+    if ((!index && index!==0 )|| typeof index !=="number" || typeof content !== "string") return console.error("Cannot edit item.");
+    const newList = listContent.slice(); //Erklärung "slice()": siehe "removeItemAtIndex()";
+    newList[index].content=content;
     setListContent(newList);
   }
   return (
@@ -68,7 +75,7 @@ export function ListMakerComponent() {
         <ResetComponent updateList={setListContent} />
         <InputComponent addItem={addItem} />
       </div>
-      <ListComponent list={listContent} removeItemAtIndex={removeItemAtIndex} setCheckAtIndex={setCheckAtIndex} />
+      <ListComponent list={listContent} removeItemAtIndex={removeItem} setCheckAtIndex={setCheck} editItemAtIndex={editItem} />
     </div>
   );
 }

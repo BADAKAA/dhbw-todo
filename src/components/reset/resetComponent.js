@@ -6,7 +6,7 @@ export const ResetComponent = ({ updateList }) => {
     //Die ResetComponent funktioniert aehnlich wie die InputComponent.
     //Hierbei wird aus der Componente listMakerComponent die Funktion setListContent geholt.
     //Anstatt Inhalte auszugeben wird das Array geleert.
-    updateList((aktuellesArray) => []);
+    updateList([]);
   }
   //Der Button RESET aktiviert den resetHandler, welcher das Array leert.
   return (

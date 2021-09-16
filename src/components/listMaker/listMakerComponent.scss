@@ -31,7 +31,7 @@
     }
     @media screen and(max-width:1000px) {
         .editor {
-            flex-direction: column;
+            flex-direction: column-reverse;
             & >* {
                 margin-top: 1rem;
             }
