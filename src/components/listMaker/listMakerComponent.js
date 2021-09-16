@@ -41,7 +41,7 @@ export function ListMakerComponent() {
 
   function addItem(item) {
     if (!item) return displayError("Kein Text eingegeben."); // Diese Zeile verhindert, dass ein leeres Listenelement hinzugefügt wird.
-    if(listContent.map(li=>li.content).includes(item.content)) return displayError("Dieser Punkt steht bereits auf der Liste."); // Diese Zeile verhindert, dass ein doppeltes Listenelement hinzugefügt wird (wichtig für die Identifizierung über keys).
+    if((listContent.map(el=>el.content)).includes(item)) return displayError("Dieser Punkt steht bereits auf der Liste."); // Diese Zeile verhindert, dass ein doppeltes Listenelement hinzugefügt wird (wichtig für die Identifizierung über keys).
     item = {content:item,checked:false};
     setListContent([...listContent,item])
   }
