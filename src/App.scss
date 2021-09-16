@@ -22,7 +22,7 @@ h1#title {
 }
 button {
     cursor: pointer;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, background-color 0.3s;
     align-self: center;
     display: inline-flex;
     padding:0.75rem;

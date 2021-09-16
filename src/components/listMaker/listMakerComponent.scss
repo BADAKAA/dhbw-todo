@@ -21,7 +21,12 @@
         &.add-item {
             margin-left: 1rem;
             color: white;
-            background-color: var(--green);
+            background-color: var(--green-hover);
+            transition: background-color 0.3s;
+            &:hover {
+                opacity: 1;
+                background-color: var(--green);
+            }
         }
     }
     @media screen and(max-width:1000px) {
