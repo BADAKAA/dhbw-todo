@@ -62,7 +62,6 @@ export function ListComponent({ list, removeItemAtIndex, setCheckAtIndex, editIt
               id={"input-" + element.id} // Diese ID wird verwendet, um das Element wiederzufinden. Siehe useEffect()-Hook
               onKeyDown={e => keyInputOnItem(e,element)}
               onClick={itemClicked}
-              //onClick={() =>  checkItem(element)} // This line
               value={element.content}
               onChange={e => editItem(e, element)}
               className={"itemContent " + (element.checked ? "checked" : "")} 
