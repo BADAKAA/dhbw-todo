@@ -31,7 +31,6 @@ export function ListMakerComponent() {
   useEffect(() => {
     // Bei jeder Änderung des Listeninhalts werden durch diese Funktion die Werte im LocalStorage festgehalten.
     localStorage.setItem("dhbw-todo-group-2",JSON.stringify([...new Set(listContent)]))
-    console.log([...new Set(listContent)]); // The Set Operator is used to remove duplicates;
   },[listContent])
   
   function displayError(error) {
